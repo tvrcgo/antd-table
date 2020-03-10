@@ -2,13 +2,12 @@ import * as React from 'react';
 import './index.less';
 import { TableProps } from 'antd/es/table';
 interface DataTableProps {
-    title: string;
-    onChange: (rows: any[]) => void;
-    onFetch: (page: number, size: number) => FetchResponse;
-    multiSelect: boolean;
-    rowAction: JSX.Element[];
-    rowActionTitle: string;
-    batchAction: JSX.Element[];
+    onChange?: (rows: any[]) => void;
+    onFetch?: (page: number, size: number) => Promise<FetchResponse>;
+    multiSelect?: boolean;
+    rowAction?: JSX.Element[];
+    rowActionTitle?: string;
+    batchAction?: JSX.Element[];
 }
 interface FetchResponse {
     data: any[];

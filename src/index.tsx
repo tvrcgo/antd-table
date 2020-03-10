@@ -4,13 +4,12 @@ import './index.less'
 import { TableProps } from 'antd/es/table'
 
 interface DataTableProps {
-  title: string
-  onChange: (rows: any[]) => void
-  onFetch: (page: number, size: number) => FetchResponse
-  multiSelect: boolean
-  rowAction: JSX.Element[]
-  rowActionTitle: string
-  batchAction: JSX.Element[]
+  onChange?: (rows: any[]) => void
+  onFetch?: (page: number, size: number) => Promise<FetchResponse>
+  multiSelect?: boolean
+  rowAction?: JSX.Element[]
+  rowActionTitle?: string
+  batchAction?: JSX.Element[]
 }
 
 interface FetchResponse {
@@ -113,7 +112,7 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
       }
     }
     // 操作区
-    const columns = rowAction ? props.columns && props.columns.concat({
+    const columns = rowAction ? props.columns?.concat({
       title: rowActionTitle || '操作',
       width: '15%',
       render: (_, row) => {
@@ -138,7 +137,7 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
     return (
       <div className='component-table'>
         <div className='table-header'>
-          <h2 className='title'>{title}</h2>
+          <h2 className='title'>{title?.call(this, {})}</h2>
           <div className='batch-action'>
             {batchAction.map((action, i) => (
               <Button
@@ -160,7 +159,7 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
             columns={columns}
             dataSource={data}
             pagination={pagination}
-            rowSelection={multiSelect && rowSelection || undefined}
+            rowSelection={multiSelect && rowSelection || {}}
           />
         </Spin>
       </div>
