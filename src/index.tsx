@@ -1,22 +1,28 @@
 import * as React from 'react'
 import { Table, Button, Spin } from 'antd'
 import './index.less'
+import { TableProps } from 'antd/es/table'
 
-interface ExtProps {
+interface DataTableProps {
   title: string
-  onChange: (rows: any[]) => void
-  onFetch: (page: number, size: number) => {}
-  multiSelect: boolean
-  rowAction: JSX.Element[]
-  rowActionTitle: string
-  batchAction: JSX.Element[]
+  onChange?: (rows: any[]) => void
+  onFetch?: (page: number, size: number) => {}
+  multiSelect?: boolean
+  rowAction?: JSX.Element[]
+  rowActionTitle?: string
+  batchAction?: JSX.Element[]
 }
 
-export default class DataTable extends React.Component<any, any> {
+interface FetchResponse {
+  data?: any[]
+  total?: number
+}
+
+export default class DataTable extends React.Component<DataTableProps & TableProps<any>, any> {
   state = {
     selectedRowKeys: [],
     selectedRows: [],
-    loading: this.props.loading || false,
+    loading: !!this.props.loading || false,
     data: [],
     page: {
       current: 1,
@@ -38,7 +44,7 @@ export default class DataTable extends React.Component<any, any> {
     const { onFetch, dataSource } = this.props
     // 远程加载
     if (onFetch) {
-      const source = await onFetch(page, size)
+      const source: FetchResponse = await onFetch(page, size)
       if (source && source.data && source.total) {
         this.setState({
           data: source.data,

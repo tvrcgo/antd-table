@@ -1,10 +1,20 @@
 import * as React from 'react';
 import './index.less';
-export default class DataTable extends React.Component<any, any> {
+import { TableProps } from 'antd/es/table';
+interface DataTableProps {
+    title: string;
+    onChange?: (rows: any[]) => void;
+    onFetch?: (page: number, size: number) => {};
+    multiSelect?: boolean;
+    rowAction?: JSX.Element[];
+    rowActionTitle?: string;
+    batchAction?: JSX.Element[];
+}
+export default class DataTable extends React.Component<DataTableProps & TableProps<any>, any> {
     state: {
         selectedRowKeys: never[];
         selectedRows: never[];
-        loading: any;
+        loading: boolean;
         data: never[];
         page: {
             current: number;
@@ -23,3 +33,4 @@ export declare const Action: ({ children, ...props }: {
 }) => React.DetailedReactHTMLElement<{
     [x: string]: any;
 }, HTMLElement>;
+export {};
