@@ -69,7 +69,13 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
   }
 
   render() {
-    const { selectedRowKeys, selectedRows, loading, data, page } = this.state
+    const {
+      selectedRowKeys,
+      selectedRows,
+      loading,
+      data,
+      page
+    } = this.state
     const {
       title,
       onFetch,
@@ -118,14 +124,14 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
       render: (_, row) => {
         return (
           <ul className='row-action'>
-            {rowAction.map((action, i) => (
+            {rowAction.map((act: any, i: number) => (
               <li key={`act-${i}`}>
                 <a
                   key={i}
                   href='javascript:;'
-                  onClick={() => action.props.onClick(row)}
+                  onClick={() => act.props.onClick(row)}
                 >
-                  {action.props.children}
+                  {act.props.children}
                 </a>
               </li>
             ))}
@@ -139,14 +145,14 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
         <div className='table-header'>
           <h2 className='title'>{title?.call(this, {})}</h2>
           <div className='batch-action'>
-            {batchAction.map((action, i) => (
+            {batchAction.map((act: any, i: number) => (
               <Button
                 key={i}
-                onClick={() => action.props.onClick(selectedRows)}
-                type={action.props.type || 'primary'}
+                onClick={() => act.props.onClick(selectedRows)}
+                type={act.props.type || 'primary'}
                 disabled={loading}
               >
-                {action.props.children}
+                {act.props.children}
               </Button>
             ))}
           </div>
@@ -170,5 +176,3 @@ export default class DataTable extends React.Component<DataTableProps & TablePro
 export const Action = ({ children, ...props }) => {
   return React.cloneElement(children, props)
 }
-
-
