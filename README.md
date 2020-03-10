@@ -1,6 +1,6 @@
-# rc-table
-Table Component
+# antd-table
+Table Component for Ant-Design
 
 ```bash
-npm i -D tvrcgo/rc-table
+npm i -D tvrcgo/antd-table
 ```
