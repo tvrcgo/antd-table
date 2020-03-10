@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "rootDirs": [
+      "src"
+    ],
+    "outDir": "lib",
+    "lib": [
+      "es5",
+      "es2015",
+      "dom",
+      "scripthost",
+      "es2016.array.include"
+    ]
+  },
+  "include": [
+    "src"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "rc-table",
+  "version": "0.1.0",
+  "description": "Table Component",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rimraf lib && tsc && cpx src/*.less lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tvrcgo/rc-table.git"
+  },
+  "keywords": [
+    "ant-design",
+    "antd",
+    "table",
+    "react"
+  ],
+  "author": "tvrcgo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tvrcgo/rc-table/issues"
+  },
+  "homepage": "https://github.com/tvrcgo/rc-table#readme",
+  "devDependencies": {
+    "@types/react": "^16.9.23",
+    "antd": "^4.0.2",
+    "cpx": "^1.5.0",
+    "react": "^16.13.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  }
+}
