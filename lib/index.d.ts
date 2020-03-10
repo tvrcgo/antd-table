@@ -1,4 +1,5 @@
 import * as React from 'react';
+import 'antd/dist/antd.less';
 import './index.less';
 import { TableProps } from 'antd/es/table';
 interface DataTableProps {
